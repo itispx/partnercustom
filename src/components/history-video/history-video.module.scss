@@ -1,0 +1,169 @@
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.videoContainer {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 42.86%;
+  background-color: #999999;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.thumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+
+  &:hover {
+    .thumbnailImage {
+      transform: scale(1.02);
+    }
+
+    .playButton {
+      transform: scale(1.1);
+    }
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+.thumbnailImage {
+  transition: transform 0.4s ease;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  transition: background 0.3s ease;
+  z-index: 1;
+}
+
+.playButtonWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  z-index: 2;
+}
+
+.playButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  svg {
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+  }
+}
+
+.caption {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 500;
+  text-align: center;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  margin: 0;
+  padding: 0 2rem;
+  max-width: 600px;
+}
+
+.videoWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+}
+
+.iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 3rem 1.5rem;
+  }
+
+  .videoContainer {
+    padding-bottom: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 2rem 1rem;
+  }
+
+  .videoContainer {
+    padding-bottom: 56.25%;
+    border-radius: 8px;
+  }
+
+  .playButton {
+    svg {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  .caption {
+    font-size: 1rem;
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .videoContainer {
+    border-radius: 6px;
+  }
+
+  .playButton {
+    svg {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  .caption {
+    font-size: 0.9rem;
+    padding: 0 1rem;
+  }
+}

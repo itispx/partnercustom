@@ -1,0 +1,140 @@
+.container {
+  padding: 5rem 0;
+  background-color: #f8f9fa;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: center;
+  margin: 0 0 3rem 0;
+}
+
+.artistsScroll {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 1rem 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.artistsGrid {
+  display: flex;
+  gap: 2rem;
+  padding: 0 2rem;
+  user-select: none;
+}
+
+.artistCard {
+  flex-shrink: 0;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-8px);
+
+    .imageWrapper {
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    }
+  }
+}
+
+.imageWrapper {
+  width: 280px;
+  height: 280px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #e0e0e0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.artistImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.artistName {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+  text-align: center;
+}
+
+.ctaWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  padding: 0 2rem;
+}
+
+.ctaButton {
+  background-color: #4a5568;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+  &:hover {
+    background-color: #2d3748;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 3rem 0;
+  }
+
+  .title {
+    font-size: 1.8rem;
+    padding: 0 1rem;
+  }
+
+  .artistsGrid {
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .artistCard {
+    width: 220px;
+  }
+
+  .imageWrapper {
+    width: 220px;
+    height: 220px;
+  }
+
+  .artistName {
+    font-size: 1rem;
+  }
+
+  .ctaButton {
+    font-size: 1rem;
+    padding: 0.875rem 2rem;
+  }
+}
