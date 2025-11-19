@@ -12,6 +12,12 @@ interface IHeaderProps {
   logoAlt: string;
 }
 
+const navItems = [
+  { href: "/", label: "Home" },
+  { href: "/sobre", label: "Sobre nós" },
+  { href: "#modelos", label: "Modelos" },
+];
+
 const Header = (props: IHeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -46,12 +52,6 @@ const Header = (props: IHeaderProps) => {
       document.body.style.overflow = "";
     };
   }, [isMobileMenuOpen]);
-
-  const navItems = [
-    { href: "/", label: "Home" },
-    { href: "/sobre", label: "Sobre nós" },
-    { href: "/modelos", label: "Modelos" },
-  ];
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);

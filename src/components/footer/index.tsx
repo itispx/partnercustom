@@ -10,32 +10,47 @@ const Footer = () => {
       <div className={styles.content}>
         <div className={styles.topSection}>
           <div className={styles.logoSection}>
-            <Image src="/logo.png" alt="Partner Custom" width={200} height={80} className={styles.logo} />
+            <Image src="/logos/preto.png" alt="Partner Custom" width={200} height={80} className={styles.logo} />
           </div>
 
           <div className={styles.rightSection}>
             <div className={styles.socialSection}>
               <Link
-                href="https://instagram.com"
+                href="https://www.instagram.com/partnercustommotorhomes"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialIcon}
               >
-                <Image src="/icons/instagram.svg" alt="Instagram" width={24} height={24} />
+                <Image src="/footer/instagram.svg" alt="Instagram" width={24} height={24} />
               </Link>
-              <Link href="https://facebook.com" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
-                <Image src="/icons/facebook.svg" alt="Facebook" width={24} height={24} />
+              <Link
+                href="https://www.facebook.com/partnercustomm/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialIcon}
+              >
+                <Image src="/footer/facebook.svg" alt="Facebook" width={24} height={24} />
               </Link>
-              <Link href="https://youtube.com" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
-                <Image src="/icons/youtube.svg" alt="YouTube" width={24} height={24} />
+              <Link
+                href="https://www.youtube.com/channel/UCscmyYHG6tvwurnxlpdMtcw"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialIcon}
+              >
+                <Image src="/footer/youtube.svg" alt="YouTube" width={24} height={24} />
               </Link>
-              <Link href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
-                <Image src="/icons/whatsapp.svg" alt="WhatsApp" width={24} height={24} />
+              <Link
+                href="https://wa.me/5551980705624"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialIcon}
+              >
+                <Image src="/footer/whatsapp.svg" alt="WhatsApp" width={24} height={24} />
               </Link>
             </div>
 
             <div className={styles.addressSection}>
-              <Image src="/icons/location.svg" alt="Localização" width={20} height={20} />
+              <Image src="/footer/pin.svg" alt="Localização" width={20} height={20} />
               <span>R Estância Velha, 1298 - Portão Velho, Portão</span>
             </div>
           </div>
@@ -49,16 +64,13 @@ const Footer = () => {
             <Link href="/sobre" className={styles.navLink}>
               Sobre nós
             </Link>
-            <Link href="/modelos" className={styles.navLink}>
+            <Link href="#modelos" className={styles.navLink}>
               Modelos
             </Link>
           </nav>
 
           <div className={styles.copyright}>
             <span>© Copyright 2025 Partner Custom</span>
-            <Link href="/termos" className={styles.termsLink}>
-              Termos e privacidade
-            </Link>
           </div>
         </div>
       </div>

@@ -6,7 +6,7 @@ import Image from "next/image";
 
 import { useState, useEffect, useCallback, useRef } from "react";
 
-interface ISlide {
+export interface ISlide {
   id: number;
   image: string;
   alt: string;
@@ -14,33 +14,14 @@ interface ISlide {
   subtitle?: string;
 }
 
-const slides: ISlide[] = [
-  {
-    id: 1,
-    image: "/confident-8.5/capa.jpg",
-    alt: "Confident 8.5",
-  },
-  {
-    id: 2,
-    image: "/p-buss/capa.jpg",
-    alt: "P-Buss",
-  },
-  {
-    id: 3,
-    image: "/position-6.5/capa.jpg",
-    alt: "Position 6.5",
-  },
-  {
-    id: 4,
-    image: "/position-7.5/capa.jpg",
-    alt: "Position 7.5",
-  },
-];
+export interface IHeroSliderProps {
+  slides: ISlide[];
+  enableAutoplay?: boolean;
+  autoplayDelay?: number;
+  enableSliding?: boolean;
+}
 
-const autoplayDelay = 5000;
-const enableAutoplay = true;
-
-const HeroSlider = () => {
+const HeroSlider: React.FC<IHeroSliderProps> = ({ slides, enableAutoplay, autoplayDelay, enableSliding }) => {
   const [currentSlide, setCurrentSlide] = useState(1);
   const [isAnimating, setIsAnimating] = useState(false);
   const [touchStart, setTouchStart] = useState(0);
@@ -56,7 +37,7 @@ const HeroSlider = () => {
 
   const goToSlide = useCallback(
     (index: number) => {
-      if (isAnimating) return;
+      if (isAnimating || !enableSliding) return;
 
       setIsAnimating(true);
       setIsTransitioning(true);
@@ -66,7 +47,7 @@ const HeroSlider = () => {
         setIsAnimating(false);
       }, 600);
     },
-    [isAnimating],
+    [isAnimating, enableSliding],
   );
 
   const nextSlide = useCallback(() => {
@@ -92,7 +73,7 @@ const HeroSlider = () => {
   }, [currentSlide, totalSlides]);
 
   useEffect(() => {
-    if (!enableAutoplay) return;
+    if (!enableAutoplay || !enableSliding) return;
 
     autoplayRef.current = setInterval(() => {
       nextSlide();
@@ -103,7 +84,7 @@ const HeroSlider = () => {
         clearInterval(autoplayRef.current);
       }
     };
-  }, [nextSlide]);
+  }, [nextSlide, enableAutoplay, autoplayDelay, enableSliding]);
 
   const resetAutoplay = useCallback(() => {
     if (!enableAutoplay) return;
@@ -115,23 +96,24 @@ const HeroSlider = () => {
     autoplayRef.current = setInterval(() => {
       nextSlide();
     }, autoplayDelay);
-  }, [nextSlide]);
+  }, [nextSlide, enableAutoplay, autoplayDelay]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
+    if (!enableSliding) return;
     setTouchStart(e.touches[0].clientX);
     setIsDragging(true);
     resetAutoplay();
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging) return;
+    if (!isDragging || !enableSliding) return;
     const currentTouch = e.touches[0].clientX;
     setTouchEnd(currentTouch);
     setDragOffset(currentTouch - touchStart);
   };
 
   const handleTouchEnd = () => {
-    if (!isDragging) return;
+    if (!isDragging || !enableSliding) return;
 
     const swipeThreshold = 50;
     const swipeDistance = touchStart - touchEnd;
@@ -151,6 +133,7 @@ const HeroSlider = () => {
   };
 
   const handleMouseDown = (e: React.MouseEvent) => {
+    if (!enableSliding) return;
     e.preventDefault();
     setTouchStart(e.clientX);
     setIsDragging(true);
@@ -158,13 +141,13 @@ const HeroSlider = () => {
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging) return;
+    if (!isDragging || !enableSliding) return;
     setTouchEnd(e.clientX);
     setDragOffset(e.clientX - touchStart);
   };
 
   const handleMouseUp = () => {
-    if (!isDragging) return;
+    if (!isDragging || !enableSliding) return;
 
     const swipeThreshold = 50;
     const swipeDistance = touchStart - touchEnd;
@@ -190,6 +173,8 @@ const HeroSlider = () => {
   };
 
   useEffect(() => {
+    if (!enableSliding) return;
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") {
         prevSlide();
@@ -202,7 +187,7 @@ const HeroSlider = () => {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [nextSlide, prevSlide, resetAutoplay]);
+  }, [nextSlide, prevSlide, resetAutoplay, enableSliding]);
 
   return (
     <section className={styles.heroSlider} aria-roledescription="carousel" aria-label="Image carousel">
@@ -220,7 +205,7 @@ const HeroSlider = () => {
             ? `translateX(calc(-${currentSlide * 100}% + ${dragOffset}px))`
             : `translateX(-${currentSlide * 100}%)`,
           transition: isTransitioning && !isDragging ? "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)" : "none",
-          cursor: isDragging ? "grabbing" : "grab",
+          cursor: enableSliding ? (isDragging ? "grabbing" : "grab") : "default",
         }}
       >
         {infiniteSlides.map((slide, index) => {

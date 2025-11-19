@@ -31,7 +31,6 @@ $border-color: #e0e0e0;
 .logo {
   width: auto;
   height: auto;
-  max-width: 200px;
 }
 
 .rightSection {
@@ -58,14 +57,21 @@ $border-color: #e0e0e0;
   justify-content: center;
   transition: all 0.3s ease;
 
+  img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s ease;
+  }
+
   &:hover {
     background-color: #333333;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  }
 
-  img {
-    filter: brightness(0) invert(1);
+    img {
+      filter: brightness(0.9) invert(1);
+    }
   }
 }
 

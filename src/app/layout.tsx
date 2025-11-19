@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import Whatsapp from "@/components/whatsapp";
 
 export const metadata: Metadata = {
   title: "Partner Custom",
@@ -19,11 +20,13 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body>
-        <Header logoSrc="/logo.png" logoAlt="PartnerCustom" />
+        <Header logoSrc="/logos/preto.png" logoAlt="PartnerCustom" />
 
         <main>{children}</main>
 
         <div style={{ margin: 150 }} />
+
+        <Whatsapp />
 
         <Footer />
       </body>

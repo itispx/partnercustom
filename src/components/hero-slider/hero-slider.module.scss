@@ -1,6 +1,7 @@
 $transition-speed: 600ms;
 $transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
 
+$mobile: 480px;
 $tablet: 768px;
 $desktop: 1024px;
 
@@ -20,12 +21,29 @@ $button-hover: rgba(255, 255, 255, 1);
 .heroSlider {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 60vh; // Smaller on mobile
+  height: 60dvh; // Dynamic viewport height for mobile browsers
   overflow: hidden;
   background-color: $black;
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
+  -webkit-tap-highlight-color: transparent; // Remove tap highlight on mobile
+
+  @media (min-width: $mobile) {
+    height: 70vh;
+    height: 70dvh;
+  }
+
+  @media (min-width: $tablet) {
+    height: 85vh;
+    height: 85dvh;
+  }
+
+  @media (min-width: $desktop) {
+    height: 100vh;
+    height: 100dvh;
+  }
 }
 
 .slidesContainer {
@@ -33,6 +51,7 @@ $button-hover: rgba(255, 255, 255, 1);
   height: 100%;
   will-change: transform;
   touch-action: pan-y;
+  -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
 }
 
 .slide {
@@ -41,6 +60,11 @@ $button-hover: rgba(255, 255, 255, 1);
   width: 100%;
   height: 100%;
   overflow: hidden;
+  transition: opacity 0.3s ease;
+
+  &[aria-hidden="true"] {
+    pointer-events: none;
+  }
 }
 
 .slideImage {
@@ -49,10 +73,27 @@ $button-hover: rgba(255, 255, 255, 1);
   transition: transform 8s ease-out;
 
   .slide:not([aria-hidden="true"]) & {
-    animation: kenBurns 15s ease-out infinite alternate;
+    // Reduce animation on mobile for better performance
+    @media (max-width: 767px) {
+      animation: kenBurnsMobile 20s ease-out infinite alternate;
+    }
+
+    @media (min-width: $tablet) {
+      animation: kenBurns 15s ease-out infinite alternate;
+    }
   }
 
   pointer-events: none;
+}
+
+// Subtle animation for mobile
+@keyframes kenBurnsMobile {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
 }
 
 @keyframes kenBurns {
@@ -69,18 +110,36 @@ $button-hover: rgba(255, 255, 255, 1);
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 2rem 1.5rem;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
+  padding: 1.5rem 1rem;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.6) 40%,
+    rgba(0, 0, 0, 0.2) 70%,
+    transparent 100%
+  );
   color: $white;
   z-index: 2;
   animation: slideContentIn 0.8s $transition-easing 0.3s both;
 
+  // Safe area for devices with notches
+  padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+  padding-left: max(1rem, env(safe-area-inset-left));
+  padding-right: max(1rem, env(safe-area-inset-right));
+
+  @media (min-width: $mobile) {
+    padding: 2rem 1.5rem;
+    padding-bottom: max(2rem, env(safe-area-inset-bottom));
+  }
+
   @media (min-width: $tablet) {
     padding: 3rem 4rem;
+    padding-bottom: max(3rem, env(safe-area-inset-bottom));
   }
 
   @media (min-width: $desktop) {
     padding: 4rem 6rem;
+    padding-bottom: max(4rem, env(safe-area-inset-bottom));
   }
 }
 
@@ -96,33 +155,52 @@ $button-hover: rgba(255, 255, 255, 1);
 }
 
 .slideTitle {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 5vw, 2.5rem); // Responsive font sizing
   font-weight: 700;
   margin: 0 0 0.5rem 0;
   line-height: 1.2;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+  letter-spacing: -0.02em; // Tighter tracking for better readability
+
+  // Prevent text from breaking awkwardly
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
+  @media (min-width: $mobile) {
+    font-size: clamp(1.75rem, 5vw, 2.75rem);
+  }
 
   @media (min-width: $tablet) {
-    font-size: 3rem;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
   }
 
   @media (min-width: $desktop) {
-    font-size: 4rem;
+    font-size: clamp(3rem, 4vw, 4rem);
   }
 }
 
 .slideSubtitle {
-  font-size: 1.125rem;
+  font-size: clamp(0.875rem, 3.5vw, 1.125rem);
   margin: 0;
   opacity: 0.95;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+  line-height: 1.5;
+
+  // Limit line length for readability on large screens
+  max-width: 100%;
+
+  @media (min-width: $mobile) {
+    font-size: clamp(1rem, 3.5vw, 1.25rem);
+  }
 
   @media (min-width: $tablet) {
-    font-size: 1.25rem;
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    max-width: 80%;
   }
 
   @media (min-width: $desktop) {
-    font-size: 1.5rem;
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    max-width: 70%;
   }
 }
 
@@ -135,6 +213,10 @@ $button-hover: rgba(255, 255, 255, 1);
   z-index: 11;
   transform-origin: left;
   animation-fill-mode: forwards;
+
+  @media (max-width: 767px) {
+    height: 2px; // Slightly thinner on mobile
+  }
 
   @media (prefers-reduced-motion: reduce) {
     display: none;
@@ -150,37 +232,45 @@ $button-hover: rgba(255, 255, 255, 1);
   }
 }
 
-.heroSlider::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 0.9) 100%);
-  z-index: 1;
-  animation: shimmer 2s infinite;
-  pointer-events: none;
-  opacity: 0;
-}
-
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
 .slidesContainer:active {
   cursor: grabbing;
 }
 
-.slide {
-  transition: opacity 0.3s ease;
+// Improve performance on mobile
+@media (max-width: 767px) {
+  .heroSlider {
+    // Hardware acceleration
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+  }
 
-  &[aria-hidden="true"] {
-    pointer-events: none;
+  .slidesContainer {
+    // Optimize for mobile scrolling
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .slideImage {
+    // Reduce image quality slightly on mobile for faster loading
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+// Handle landscape orientation on mobile
+@media (max-width: 767px) and (orientation: landscape) {
+  .slideContent {
+    padding: 1rem;
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+
+    // More compact gradient for landscape
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 50%, transparent 100%);
+  }
+
+  .slideTitle {
+    font-size: clamp(1.25rem, 4vw, 2rem);
+    margin-bottom: 0.25rem;
+  }
+
+  .slideSubtitle {
+    font-size: clamp(0.75rem, 3vw, 1rem);
   }
 }

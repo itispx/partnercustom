@@ -5,15 +5,24 @@ import Image from "next/image";
 import React, { useState, useRef, useCallback, useEffect, useMemo } from "react";
 
 const artists = [
-  { id: 1, name: "Kai Cenat", image: "/artists/kai-cenat.jpg" },
-  { id: 2, name: "Eminem", image: "/artists/eminem.jpg" },
-  { id: 3, name: "Drake", image: "/artists/drake.jpg" },
-  { id: 4, name: "Kai Cenat", image: "/artists/kai-cenat.jpg" },
-  { id: 5, name: "Eminem", image: "/artists/eminem.jpg" },
-  { id: 6, name: "Drake", image: "/artists/drake.jpg" },
-  { id: 7, name: "Kai Cenat", image: "/artists/kai-cenat.jpg" },
-  { id: 8, name: "Eminem", image: "/artists/eminem.jpg" },
-  { id: 9, name: "Drake", image: "/artists/drake.jpg" },
+  { id: 1, name: "Alemão do Forró", image: "/artistas/alemao-do-forro.png" },
+  { id: 2, name: "Banda Grafith", image: "/artistas/banda-grafith.png" },
+  { id: 3, name: "Clayton & Romário", image: "/artistas/clayton-e-romario.png" },
+  { id: 4, name: "Edson & Hudson", image: "/artistas/edson-e-hudson.png" },
+  { id: 5, name: "Gustavo Mioto", image: "/artistas/gustavo-mioto.png" },
+  { id: 6, name: "Henry Freitas", image: "/artistas/henry-freitas.png" },
+  { id: 7, name: "Ícaro e Gilmar", image: "/artistas/icaro-e-gilmar.png" },
+  { id: 8, name: "João Gomes", image: "/artistas/joao-gomes.png" },
+  { id: 9, name: "João Neto & Frederico", image: "/artistas/joao-neto-e-frederico.png" },
+  { id: 10, name: "Natanzinho Lima", image: "/artistas/natanzinho-lima.png" },
+  { id: 11, name: "Nattan", image: "/artistas/nattan.png" },
+  { id: 12, name: "Pablo", image: "/artistas/pablo.png" },
+  { id: 13, name: "Solange Almeida", image: "/artistas/solange-almeida.png" },
+  { id: 14, name: "Tarcísio do Acordeon", image: "/artistas/tarcisio-do-acordeon.png" },
+  { id: 15, name: "Tchê Chaleira", image: "/artistas/tche-chaleira.png" },
+  { id: 16, name: "Teodoro & Sampaio", image: "/artistas/teodoro-e-sampaio.png" },
+  { id: 17, name: "Zé Cantor", image: "/artistas/ze-cantor.png" },
+  { id: 18, name: "Zezo Potiguar", image: "/artistas/zezo-potiguar.png" },
 ];
 
 const Artists = () => {
@@ -213,10 +222,6 @@ const Artists = () => {
             </div>
           ))}
         </div>
-      </div>
-
-      <div className={styles.ctaWrapper}>
-        <button className={styles.ctaButton}>Veja os ônibus exclusivos</button>
       </div>
     </section>
   );

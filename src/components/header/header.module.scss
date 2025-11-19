@@ -89,13 +89,13 @@ $overlay-bg: rgba(0, 0, 0, 0.5);
 }
 
 .logoImage {
-  width: 70px;
-  height: 70px;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
 
   @media (min-width: $desktop) {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
   }
 }
 

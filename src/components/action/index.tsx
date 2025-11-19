@@ -1,11 +1,15 @@
 "use client";
 
+import Image from "next/image";
 import styles from "./action.module.scss";
 
 const Action = () => {
   return (
     <section className={styles.container}>
+      <Image src="/cta/cta.png" alt="Camper background" fill priority className={styles.bgImage} />
+
       <div className={styles.overlay} />
+
       <div className={styles.content}>
         <h1 className={styles.title}>Sua casa perfeita sobre rodas começa aqui</h1>
         <p className={styles.subtitle}>Exclusividade, conforto e liberdade, em cada detalhe.</p>

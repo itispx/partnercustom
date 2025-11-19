@@ -2,46 +2,32 @@
 
 import styles from "./models.module.scss";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
-const Models = () => {
-  const [activeTab, setActiveTab] = useState("TODOS");
+export interface Model {
+  id: number;
+  name: string;
+  image: string;
+  category: string;
+  href?: string;
+}
 
-  const tabs = ["TODOS", "CHASSI CABINE", "VAN", "ÔNIBUS"];
+export interface IModelsProps {
+  title: string;
+  tabs: string[];
+  models: Model[];
+  defaultTab?: string;
+}
 
-  const models = [
-    {
-      id: 1,
-      name: "Position 6.5",
-      image: "/position-6.5/capa.jpg",
-      category: "CHASSI CABINE",
-    },
-    {
-      id: 2,
-      name: "Position 7.5",
-      image: "/position-7.5/capa.jpg",
-      category: "CHASSI CABINE",
-    },
-    {
-      id: 3,
-      name: "Confident 8.5",
-      image: "/confident-8.5/capa.jpg",
-      category: "VAN",
-    },
-    // Add more models with their respective categories
-    // {
-    //   id: 4,
-    //   name: "Model Name",
-    //   image: "/path/to/image.jpg",
-    //   category: "ÔNIBUS",
-    // },
-  ];
+const Models: React.FC<IModelsProps> = ({ title, tabs, models, defaultTab }) => {
+  const [activeTab, setActiveTab] = useState(defaultTab);
 
-  const filteredModels = activeTab === "TODOS" ? models : models.filter((model) => model.category === activeTab);
+  const filteredModels = activeTab === defaultTab ? models : models.filter((model) => model.category === activeTab);
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>Conheça os nossos modelos</h2>
+      <h2 className={styles.title}>{title}</h2>
 
       <div className={styles.tabs}>
         {tabs.map((tab) => (
@@ -57,10 +43,10 @@ const Models = () => {
 
       <div className={styles.modelsGrid}>
         {filteredModels.map((model) => (
-          <div key={model.id} className={styles.card}>
+          <Link key={model.id} href={model.href || "#"} className={styles.card}>
             <Image src={model.image} alt={model.name} width={800} height={600} className={styles.cardImage} />
             <h3 className={styles.cardTitle}>{model.name}</h3>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

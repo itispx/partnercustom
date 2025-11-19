@@ -74,37 +74,6 @@
   text-align: center;
 }
 
-.ctaWrapper {
-  display: flex;
-  justify-content: center;
-  margin-top: 3rem;
-  padding: 0 2rem;
-}
-
-.ctaButton {
-  background-color: #4a5568;
-  color: #ffffff;
-  font-size: 1.1rem;
-  font-weight: 600;
-  padding: 1rem 3rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-
-  &:hover {
-    background-color: #2d3748;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-  }
-
-  &:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  }
-}
-
 @media (max-width: 768px) {
   .container {
     padding: 3rem 0;

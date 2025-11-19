@@ -7,10 +7,12 @@ $button: #4b4a4a;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("/action.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.bgImage {
+  object-fit: cover;
+  z-index: 0;
 }
 
 .overlay {

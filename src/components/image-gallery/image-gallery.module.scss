@@ -1,0 +1,186 @@
+.gallery {
+  // width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.gallery__main {
+  position: relative;
+  width: 100%;
+  height: 660px;
+  background: #f5f5f5;
+  border-radius: 0;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.gallery__mainImage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.gallery__controls {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  gap: 0;
+  z-index: 10;
+}
+
+.gallery__filterBtn {
+  padding: 12px 24px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  transition: all 0.3s ease;
+  border-radius: 0;
+
+  &:first-child {
+    border-right: none;
+  }
+
+  &:hover {
+    background: #f5f5f5;
+  }
+
+  &.active {
+    background: #333;
+    color: white;
+    border-color: #333;
+  }
+}
+
+.gallery__navControls {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.gallery__nav {
+  width: 48px;
+  height: 48px;
+  background: white;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #f5f5f5;
+  }
+
+  svg {
+    color: #333;
+  }
+}
+
+.gallery__thumbnails {
+  width: 100%;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f5f5f5;
+    border-radius: 0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 0;
+
+    &:hover {
+      background: #999;
+    }
+  }
+}
+
+.gallery__thumbnailsWrapper {
+  display: flex;
+  gap: 1px;
+  padding: 4px;
+}
+
+.gallery__thumbnail {
+  position: relative;
+  flex-shrink: 0;
+  width: 250px;
+  height: 130px;
+  border: 3px solid transparent;
+  border-radius: 0;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: none;
+  padding: 0;
+  margin-bottom: 10px;
+
+  //   &:hover {
+  //     border-color: #ccc;
+  //     transform: scale(1.05);
+  //   }
+
+  //   &.active {
+  //     border-color: #007bff;
+  //     transform: scale(1.05);
+  //   }
+}
+
+@media (max-width: 768px) {
+  .gallery__main {
+    height: 300px;
+  }
+
+  .gallery__controls {
+    top: 10px;
+    left: 10px;
+  }
+
+  .gallery__navControls {
+    top: 10px;
+    right: 10px;
+    gap: 6px;
+  }
+
+  .gallery__nav {
+    width: 40px;
+    height: 40px;
+  }
+
+  .gallery__thumbnail {
+    width: 100px;
+    height: 70px;
+  }
+
+  .gallery__filterBtn {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery__main {
+    height: 250px;
+  }
+
+  .gallery__thumbnail {
+    width: 80px;
+    height: 60px;
+  }
+}

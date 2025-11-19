@@ -5,7 +5,7 @@ import HistoryVideo from "@/components/history-video";
 import Team from "@/components/team";
 import Contact from "@/components/contact";
 
-export default function Sobre() {
+export default function SobrePage() {
   return (
     <>
       <div className={styles.titleContainer}>

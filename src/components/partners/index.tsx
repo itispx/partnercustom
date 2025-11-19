@@ -5,10 +5,10 @@ import Image from "next/image";
 import React, { useState, useEffect, useCallback, useRef } from "react";
 
 const partners = [
-  { id: 1, alt: "Shopping do Motorhome", image: "/partners/shopping-do-motorhome.png" },
-  { id: 2, alt: "Eurohome Motorhomes", image: "/partners/eurohome-motorhomes.png" },
-  { id: 3, alt: "Victron Energy Blue Power", image: "/partners/victron-energy.jpg" },
-  { id: 4, alt: "Marco Polo", image: "/partners/marco-polo.jpg" },
+  { id: 1, alt: "Shopping do Motorhome", image: "/parceiros/shopping-do-motorhome.png" },
+  { id: 2, alt: "Eurohome Motorhomes", image: "/parceiros/eurohome-motorhomes.png" },
+  { id: 3, alt: "Victron Energy Blue Power", image: "/parceiros/victron-energy.png" },
+  { id: 4, alt: "Marco Polo", image: "/parceiros/marco-polo.jpg" },
 ];
 
 const Partners = () => {

@@ -4,29 +4,20 @@ import styles from "./testimonials.module.scss";
 import Image from "next/image";
 import { useState, useRef, useCallback } from "react";
 
-const testimonials = [
-  {
-    id: 1,
-    thumbnail: "https://img.youtube.com/vi/jNQXAC9IVRw/maxresdefault.jpg",
-    youtubeId: "jNQXAC9IVRw",
-    title: "Casal feliz com motorhome",
-  },
-  {
-    id: 2,
-    thumbnail: "https://img.youtube.com/vi/9bZkp7q19f0/maxresdefault.jpg",
-    youtubeId: "9bZkp7q19f0",
-    title: "Família com motorhome",
-  },
-  {
-    id: 3,
-    thumbnail: "https://img.youtube.com/vi/L_jWHffIx5E/maxresdefault.jpg",
-    youtubeId: "L_jWHffIx5E",
-    title: "Ele era um ônibus",
-    caption: "Ele era um ônibus",
-  },
-];
+interface Testimonial {
+  id: number;
+  thumbnail: string;
+  youtubeId: string;
+  title: string;
+  caption?: string;
+}
 
-const Testimonials = () => {
+interface ITestimonialsProps {
+  title: string;
+  testimonials: Testimonial[];
+}
+
+const Testimonials: React.FC<ITestimonialsProps> = ({ title, testimonials }) => {
   const [activeVideo, setActiveVideo] = useState<number | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -104,7 +95,7 @@ const Testimonials = () => {
   return (
     <div className={styles.container}>
       <div className={styles.titleWrapper}>
-        <h2 className={styles.title}>Voz de quem já viveu o sonho</h2>
+        <h2 className={styles.title}>{title}</h2>
       </div>
 
       <div
