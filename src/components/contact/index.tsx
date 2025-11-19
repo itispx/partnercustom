@@ -34,7 +34,7 @@ const Contact = () => {
         <div className={styles.imageSection}>
           <div className={styles.imageWrapper}>
             <Image
-              src="/confident-8.5/capa.jpg"
+              src="/modelos/confident-8.5/capa.jpg"
               alt="Motorhome Partner Custom"
               width={600}
               height={800}

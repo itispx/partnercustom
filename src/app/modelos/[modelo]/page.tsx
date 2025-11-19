@@ -436,10 +436,13 @@ const modelos: Record<string, IModelo> = {
   "winner-p-7.2": winnerP72,
 };
 
-export default async function ModeloPage({ params }: { params: { modelo: string } }) {
-  const { modelo: modeloParam } = await params;
+type PageProps = {
+  params: Promise<{ modelo: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
 
-  console.log({ modeloParam });
+export default async function ModeloPage({ params }: PageProps) {
+  const { modelo: modeloParam } = await params;
 
   const modelo = modelos[modeloParam];
 

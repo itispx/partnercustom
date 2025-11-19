@@ -8,13 +8,13 @@ const teamMembers = [
     id: 1,
     name: "Odirlei",
     role: "Eletricista",
-    image: "/team/odirlei.jpg",
+    image: "/team/drake.webp",
   },
   {
     id: 2,
     name: "Juliana",
     role: "Eletricista",
-    image: "/team/juliana.jpg",
+    image: "/team/eminem.jpg",
   },
 ];
 

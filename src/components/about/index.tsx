@@ -25,7 +25,7 @@ const About = () => {
           </div>
 
           <div className={styles.logoSection}>
-            <Image src="/logo.png" alt="Partner Custom" width={300} height={120} className={styles.logo} />
+            <Image src="/logos/preto.png" alt="Partner Custom" width={300} height={120} className={styles.logo} />
           </div>
         </div>
 

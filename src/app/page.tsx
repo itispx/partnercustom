@@ -1,7 +1,7 @@
 import HeroSlider, { IHeroSliderProps } from "@/components/hero-slider";
 import Showcase, { IShowcaseProps } from "@/components/showcase";
 import Models, { IModelsProps } from "@/components/models";
-import Testimonials from "@/components/testimonials";
+import Testimonials, { ITestimonialsProps } from "@/components/testimonials";
 import Steps, { IStepsProps } from "@/components/steps";
 import CtaButton from "@/components/cta-button";
 import Artists from "@/components/artists";
@@ -82,7 +82,7 @@ const modelsProps: IModelsProps = {
       name: "P-Buss",
       image: "/modelos/p-buss/capa.jpg",
       category: "ÔNIBUS",
-      href: "/modelos/p-buss",
+      href: "/modelos/onibus/p-buss",
     },
     {
       id: 5,
@@ -95,7 +95,7 @@ const modelsProps: IModelsProps = {
   defaultTab: "TODOS",
 };
 
-const testimonialsProps = {
+const testimonialsProps: ITestimonialsProps = {
   title: "Voz de quem já viveu o sonho",
   testimonials: [
     {

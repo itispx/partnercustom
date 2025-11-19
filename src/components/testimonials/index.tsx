@@ -12,7 +12,7 @@ interface Testimonial {
   caption?: string;
 }
 
-interface ITestimonialsProps {
+export interface ITestimonialsProps {
   title: string;
   testimonials: Testimonial[];
 }

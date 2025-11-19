@@ -15,7 +15,7 @@ interface IHeaderProps {
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/sobre", label: "Sobre nós" },
-  { href: "#modelos", label: "Modelos" },
+  { href: "/#modelos", label: "Modelos" },
 ];
 
 const Header = (props: IHeaderProps) => {
