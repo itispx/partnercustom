@@ -54,27 +54,27 @@ const showcaseProps: IShowcaseProps = {
 
 const modelsProps: IModelsProps = {
   title: "Conheça os nossos modelos",
-  tabs: ["TODOS", "VAN", "ÔNIBUS", "CHASSI CABINE"],
+  tabs: ["TODOS", "CHASSI CABINE", "ÔNIBUS", "TRAILER"],
   models: [
     {
       id: 1,
       name: "Confident 8.5",
       image: "/modelos/confident-8.5/capa.jpg",
-      category: "VAN",
+      category: "CHASSI CABINE",
       href: "/modelos/confident-8.5",
     },
     {
       id: 2,
       name: "Position 7.5",
       image: "/modelos/position-7.5/capa.jpg",
-      category: "VAN",
+      category: "CHASSI CABINE",
       href: "/modelos/position-7.5",
     },
     {
       id: 3,
       name: "Position 6.5",
       image: "/modelos/position-6.5/capa.jpg",
-      category: "VAN",
+      category: "CHASSI CABINE",
       href: "/modelos/position-6.5",
     },
     {
@@ -88,7 +88,7 @@ const modelsProps: IModelsProps = {
       id: 5,
       name: "Winner P-7.2",
       image: "/modelos/winner-p-7.2/capa.jpg",
-      category: "CHASSI CABINE",
+      category: "TRAILER",
       href: "/modelos/winner-p-7.2",
     },
   ],

@@ -16,7 +16,7 @@ const Footer = () => {
           <div className={styles.rightSection}>
             <div className={styles.socialSection}>
               <Link
-                href="https://www.instagram.com/partnercustommotorhomes"
+                href="https://www.instagram.com/partnercustomm"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialIcon}

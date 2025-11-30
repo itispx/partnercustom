@@ -14,10 +14,11 @@ interface Testimonial {
 
 export interface ITestimonialsProps {
   title: string;
+  vejaMais?: boolean;
   testimonials: Testimonial[];
 }
 
-const Testimonials: React.FC<ITestimonialsProps> = ({ title, testimonials }) => {
+const Testimonials: React.FC<ITestimonialsProps> = ({ title, vejaMais, testimonials }) => {
   const [activeVideo, setActiveVideo] = useState<number | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -96,6 +97,16 @@ const Testimonials: React.FC<ITestimonialsProps> = ({ title, testimonials }) => 
     <div className={styles.container}>
       <div className={styles.titleWrapper}>
         <h2 className={styles.title}>{title}</h2>
+        {vejaMais && (
+          <a
+            href="https://www.instagram.com/partnercustomm"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.vejaMais}
+          >
+            Veja mais vídeos
+          </a>
+        )}
       </div>
 
       <div

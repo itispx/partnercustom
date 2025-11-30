@@ -8,7 +8,6 @@ const partners = [
   { id: 1, alt: "Shopping do Motorhome", image: "/parceiros/shopping-do-motorhome.png" },
   { id: 2, alt: "Eurohome Motorhomes", image: "/parceiros/eurohome-motorhomes.png" },
   { id: 3, alt: "Victron Energy Blue Power", image: "/parceiros/victron-energy.png" },
-  { id: 4, alt: "Marco Polo", image: "/parceiros/marco-polo.jpg" },
 ];
 
 const Partners = () => {

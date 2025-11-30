@@ -46,7 +46,8 @@ const pbuss: IModelo = {
     ],
   },
   testimonialsProps: {
-    title: "Voz de quem já viveu o sonho",
+    title: "Quando o projeto ganha vida",
+    vejaMais: true,
     testimonials: [
       {
         id: 1,

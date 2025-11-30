@@ -5,9 +5,11 @@
 }
 
 .titleWrapper {
+  width: 960px;
+  justify-self: center;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 1rem;
   margin-bottom: 3rem;
 }
@@ -16,8 +18,19 @@
   font-size: 2.5rem;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 2rem;
   color: #1a1a1a;
+}
+
+.vejaMais {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 400;
+  cursor: pointer;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #1a1a1a;
+  }
 }
 
 .testimonialsScroll {

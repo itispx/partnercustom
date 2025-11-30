@@ -33,13 +33,7 @@ const DetailsSection: React.FC<IDetailsSectionProps> = ({ mainTitle, highlightTe
             }`}
           >
             <div className={styles.details__imageWrapper}>
-              <Image
-                src={item.image}
-                alt={item.title}
-                fill
-                sizes="(max-width: 768px) 100vw, 500px"
-                style={{ objectFit: "cover" }}
-              />
+              <Image src={item.image} alt={item.title} fill style={{ objectFit: "cover" }} />
             </div>
             <div className={styles.details__content}>
               <h3 className={styles.details__title}>{item.title}</h3>

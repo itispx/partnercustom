@@ -25,29 +25,22 @@
   letter-spacing: -0.02em;
   font-weight: 700;
   margin: 0;
+}
 
-  .highlight {
-    font-style: italic;
-    display: block;
-    margin-top: 0.5rem;
-    position: relative;
-    cursor: pointer;
-    transition: color 0.6s ease;
+.highlight {
+  font-style: italic;
+  cursor: pointer;
+  position: relative;
+  display: inline;
+  background-image: linear-gradient(to right, currentColor 0%, currentColor 100%);
+  background-size: 0% 2px;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  transition: background-size 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  padding-bottom: 2px;
 
-    &::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -3px;
-      width: 0;
-      height: 2px;
-      background-color: currentColor;
-      transition: width 0.6s ease;
-    }
-
-    &:hover::after {
-      width: 100%;
-    }
+  &:hover {
+    background-size: 100% 2px;
   }
 }
 
