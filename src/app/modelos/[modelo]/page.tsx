@@ -1,12 +1,14 @@
 import { redirect } from "next/navigation";
 
-import DetailsSection, { IDetailsSectionProps } from "@/components/details-section/details-section";
 import HeroSlider, { IHeroSliderProps } from "@/components/hero-slider";
-import HistoryVideo from "@/components/history-video";
 import ImageGallery, { IImageGalleryProps } from "@/components/image-gallery";
 import Differentials, { IDifferentialsProps } from "@/components/differentials";
+import ComparisonTable, { IComparisonTableProps } from "@/components/comparison-table";
+import HistoryVideo from "@/components/history-video";
+import DetailsSection, { IDetailsSectionProps } from "@/components/details-section/details-section";
 
 interface IModelo {
+  name: string;
   heroSliderProps: IHeroSliderProps;
   imageGalleryProps: IImageGalleryProps;
   differentialsProps: IDifferentialsProps;
@@ -14,6 +16,7 @@ interface IModelo {
 }
 
 const confident85: IModelo = {
+  name: "Confident 8.5",
   heroSliderProps: {
     slides: [{ id: 1, image: "/modelos/confident-8.5/capa-fade.jpg", alt: "Confident 8.5" }],
   },
@@ -128,6 +131,7 @@ const confident85: IModelo = {
 };
 
 const position65: IModelo = {
+  name: "Position 6.5",
   heroSliderProps: {
     slides: [{ id: 1, image: "/modelos/position-6.5/capa-fade.png", alt: "Position 6.5" }],
   },
@@ -220,6 +224,7 @@ const position65: IModelo = {
 };
 
 const position75: IModelo = {
+  name: "Position 7.5",
   heroSliderProps: {
     slides: [{ id: 1, image: "/modelos/position-7.5/capa-fade.jpg", alt: "Position 7.5" }],
   },
@@ -329,6 +334,7 @@ const position75: IModelo = {
 };
 
 const winnerP72: IModelo = {
+  name: "Winner P-7.2",
   heroSliderProps: {
     slides: [{ id: 1, image: "/modelos/winner-p-7.2/capa-fade.jpg", alt: "Winner P-7.2" }],
   },
@@ -429,6 +435,61 @@ const winnerP72: IModelo = {
   },
 };
 
+const comparisonTableModels: IComparisonTableProps["models"] = [
+  {
+    id: 1,
+    name: "Confident 8.5",
+    habilitacao: "?",
+    acomodacoes: "?",
+    quantosDormem: "?",
+    altura: "3,25m",
+    largura: "2,30m",
+    comprimento: "8,5m",
+    consumo: "?",
+    peso: "?",
+    href: "/modelos/confident-8.5",
+  },
+  {
+    id: 2,
+    name: "Position 6.5",
+    habilitacao: "Categoria B",
+    acomodacoes: "5",
+    quantosDormem: "4",
+    altura: "?",
+    largura: "?",
+    comprimento: "?",
+    consumo: "?",
+    peso: "?",
+    href: "/modelos/position-6.5",
+  },
+  {
+    id: 3,
+    name: "Position 7.5",
+    habilitacao: "Categoria B",
+    acomodacoes: "6",
+    quantosDormem: "6",
+    altura: "7,5m",
+    largura: "2,10m",
+    comprimento: "3,25m",
+    consumo: "?",
+    peso: "?",
+    href: "/modelos/position-7.5",
+  },
+  {
+    id: 4,
+    name: "Winner P-7.2",
+    habilitacao: "Categoria C",
+    acomodacoes: "5",
+    quantosDormem: "?",
+    altura: "2,80m",
+    largura: "2,1m",
+    comprimento: "7,20m",
+    consumo: "Não possui",
+    peso: "?",
+    href: "/modelos/winner-p-7.2",
+  },
+];
+
 const modelos: Record<string, IModelo> = {
   "confident-8.5": confident85,
   "position-6.5": position65,
@@ -457,6 +518,10 @@ export default async function ModeloPage({ params }: PageProps) {
       <div style={{ margin: 50 }} />
 
       <ImageGallery {...modelo.imageGalleryProps} />
+
+      <div style={{ margin: 50 }} />
+
+      <ComparisonTable primaryModelName={modelo.name} models={comparisonTableModels} />
 
       <div style={{ margin: 30 }} />
 

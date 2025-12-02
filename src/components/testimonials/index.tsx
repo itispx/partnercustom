@@ -95,7 +95,10 @@ const Testimonials: React.FC<ITestimonialsProps> = ({ title, vejaMais, testimoni
 
   return (
     <div className={styles.container}>
-      <div className={styles.titleWrapper}>
+      <div
+        className={styles.titleWrapper}
+        style={vejaMais ? { justifyContent: "space-between" } : { justifyContent: "center" }}
+      >
         <h2 className={styles.title}>{title}</h2>
         {vejaMais && (
           <a
